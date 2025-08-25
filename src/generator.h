@@ -1,18 +1,25 @@
-#ifndef GENERADOR_H   // 1. Guardas contra inclusiones múltiples
+#ifndef GENERADOR_H
 #define GENERADOR_H
 
-#include <string>     // Para usar tipo std::string
-#include <vector>     // Para usar tipo std::vector
+#include <string>
+#include <vector>
 
-// 2. Declaración de funciones que implementaremos en generador.cpp
+// Estructura para almacenar los bancos de palabras
+struct BancoPalabras {
+    std::vector<std::string> personajes;
+    std::vector<std::string> lugares;
+    std::vector<std::string> acciones;
+    std::vector<std::string> objetos;
+    std::vector<std::string> desenlaces;
+};
 
-// Función que carga los bancos de un género específico
-void cargarBancos(const std::string& carpetaGenero);
+// Funciones para cargar palabras desde archivos .txt
+BancoPalabras cargarBancoPalabras(const std::string& carpetaGenero);
 
-// Función que recibe un vector de strings y devuelve un elemento aleatorio
-std::string obtenerAleatorio(const std::vector<std::string>& banco);
+// Función para generar un microcuento aleatorio
+std::string generarMicrocuento(const BancoPalabras& banco);
 
-// Función que genera una historia combinando elementos de los bancos
-std::string generarHistoria();
+// Función para seleccionar una palabra aleatoria de una lista
+std::string palabraAleatoria(const std::vector<std::string>& lista);
 
-#endif // GENERADOR_H
+#endif
